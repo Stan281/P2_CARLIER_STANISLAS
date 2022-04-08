@@ -7,14 +7,14 @@ driver = webdriver.Chrome(service=path)
 website = ('https://books.toscrape.com/catalogue/soumission_998/index.html')
 driver.get(website)
 
-website_title = driver.find_elements(By.XPATH, '//*[@id="content_inner"]/article/div[1]/div[2]/h1')
-website_desc = driver.find_elements(By.XPATH, '//*[@id="content_inner"]/article/p')
+title = driver.find_elements(By.XPATH, '//*[@id="content_inner"]/article/div[1]/div[2]/h1')
+product_description = driver.find_elements(By.XPATH, '//*[@id="content_inner"]/article/p')
 
 book=[]
-for i in range(len(website_title)):
+for i in range(len(title)):
     book_info={}
-    book_info['title']=website_title[i].text
-    book_info['description']=website_desc[i].text
+    book_info['title']=title[i].text
+    book_info['product_description']=product_description[i].text
     book.append(book_info)
 print(book)
 
